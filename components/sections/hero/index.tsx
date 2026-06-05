@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden px-6 lg:px-16 pt-24 hero"
+      className="relative min-h-screen flex items-center overflow-hidden px-6 lg:px-16 pt-24"
     >
       {/* Background image */}
       <Image
@@ -17,6 +17,7 @@ export default function Hero() {
         alt=""
         fill
         priority
+        sizes="100vw"
         className="object-cover object-center"
         aria-hidden
       />

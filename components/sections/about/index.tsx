@@ -63,7 +63,10 @@ export default function About() {
           viewport={{ once: true, margin: "-80px" }}
         >
           {/* Quote */}
-          <motion.div className="border-l-4 border-[#ee690b] pl-6" variants={fadeUp}>
+          <motion.div
+            className="border-l-4 border-[#ee690b] pl-6"
+            variants={fadeUp}
+          >
             <p className="text-2xl sm:text-3xl font-extrabold text-[#BBD3EB] tracking-tight leading-snug">
               &ldquo;I build high-performance products for the web and mobile,
               occasionally breaking them beautifully to rebuild them even
@@ -126,7 +129,7 @@ export default function About() {
                 variants={statItem}
                 className="group relative rounded-[5px] border border-zinc-200/50 dark:border-zinc-800/60 p-6 sm:p-8 bg-zinc-50/50 dark:bg-zinc-900/30 backdrop-blur-xs transition-all duration-300 hover:border-[#ee690b]/50 dark:hover:border-[#ee690b]/40 hover:-translate-y-1"
               >
-                <div className="absolute top-0 left-0 w-0 h-[3px] bg-[#ee690b] transition-all duration-300 group-hover:w-full" />
+                <div className="absolute top-0 left-0 w-0 h-0.75 bg-[#ee690b] transition-all duration-300 group-hover:w-full" />
                 <p className="text-4xl sm:text-5xl font-black text-[#BBD3EB] tracking-tight transition-colors group-hover:text-[#ee690b]">
                   {value}
                 </p>
@@ -145,7 +148,7 @@ export default function About() {
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="h-[2px] w-6 bg-[#ee690b]" />
+      <span className="h-0/5 w-6 bg-[#ee690b]" />
       <p className="text-xs sm:text-sm font-black uppercase tracking-widest text-[#ee690b]">
         {children}
       </p>

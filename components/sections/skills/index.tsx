@@ -69,7 +69,7 @@ export default function Skills() {
             <motion.div
               key={title}
               variants={cardItem}
-              className="group relative rounded-[5px] border border-zinc-200/50 dark:border-zinc-800/60 p-6 sm:p-8 bg-white dark:bg-zinc-900/20 backdrop-blur-xs transition-all duration-300 hover:border-[#ee690b]/40 dark:hover:border-[#ee690b]/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/[0.02]"
+              className="group relative rounded-[5px] border border-zinc-200/50 dark:border-zinc-800/60 p-6 sm:p-8 bg-white dark:bg-zinc-900/20 backdrop-blur-xs transition-all duration-300 hover:border-[#ee690b]/40 dark:hover:border-[#ee690b]/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/2"
             >
               {/* Corner accent */}
               <div className="absolute top-0 right-0 w-0 h-0 border-t-2 border-r-2 border-[#ee690b] transition-all duration-300 group-hover:w-4 group-hover:h-4" />

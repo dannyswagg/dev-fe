@@ -48,8 +48,16 @@ export default function MobileCarousel({
     const check = () => setIsMobile(window.innerWidth < 768);
     check();
     setMounted(true);
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+    let rafId: number;
+    const onResize = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(check);
+    };
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      window.removeEventListener("resize", onResize);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const navigate = useCallback(
@@ -59,7 +67,7 @@ export default function MobileCarousel({
       setDirection(dir);
       setIndex(next);
     },
-    [index, slides.length]
+    [index, slides.length],
   );
 
   useEffect(() => {
@@ -74,10 +82,7 @@ export default function MobileCarousel({
   const onDragEnd = useCallback(
     (_: PointerEvent, info: PanInfo) => {
       setIsDragging(false);
-      if (
-        info.offset.x < -SWIPE_OFFSET ||
-        info.velocity.x < -SWIPE_VELOCITY
-      ) {
+      if (info.offset.x < -SWIPE_OFFSET || info.velocity.x < -SWIPE_VELOCITY) {
         navigate(1);
       } else if (
         info.offset.x > SWIPE_OFFSET ||
@@ -86,7 +91,7 @@ export default function MobileCarousel({
         navigate(-1);
       }
     },
-    [navigate]
+    [navigate],
   );
 
   if (!mounted || !isMobile) {
@@ -100,7 +105,7 @@ export default function MobileCarousel({
     <div className="fixed inset-0 bg-[#07090b] overflow-hidden z-10">
       {/* Ambient background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#0b1014_0%,_#07090b_70%)]" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[40vh] bg-[#ee690b]/[0.04] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[40vh] bg-[#ee690b]/4 rounded-full blur-3xl pointer-events-none" />
 
       {/* Cards stack */}
       <AnimatePresence initial={false} custom={direction}>
@@ -168,7 +173,7 @@ export default function MobileCarousel({
           {LABELS[index]}
         </motion.span>
 
-        <div className="flex items-center gap-[6px] pointer-events-auto">
+        <div className="flex items-center gap-1.5 pointer-events-auto">
           {slides.map((_, i) => (
             <button
               key={i}

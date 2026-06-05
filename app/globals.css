@@ -25,8 +25,3 @@ body {
   color: var(--foreground);
   font-family: var(--font-stack-sans-notch), sans-serif;
 }
-.hero {
-  background: url("../public/bg-fe.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-}

@@ -94,8 +94,9 @@ export default function MobileCarousel({
     [navigate],
   );
 
+  // Desktop layout is owned by page.tsx's <main>; this component is overlay-only.
   if (!mounted || !isMobile) {
-    return <main>{children}</main>;
+    return null;
   }
 
   const isFirst = index === 0;

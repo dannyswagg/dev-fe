@@ -1,38 +1,86 @@
+"use client";
+
+import { motion } from "motion/react";
+import Image from "next/image";
+
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden px-6 lg:px-16 pt-24 hero bg-zinc-50 dark:bg-zinc-950"
+      className="relative min-h-screen flex items-center overflow-hidden px-6 lg:px-16 pt-24 hero"
     >
-      {/* Giant Typography Background Elements Spanning to the Right */}
-      <div className="absolute right-0 bottom-1/4 select-none pointer-events-none font-black text-[14vw] leading-none text-zinc-200/25 dark:text-zinc-900/20 tracking-tighter uppercase whitespace-nowrap z-0 translate-x-12">
+      {/* Background image */}
+      <Image
+        src="/bg-mob.webp"
+        alt=""
+        fill
+        priority
+        className="object-cover object-center"
+        aria-hidden
+      />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/30" />
+
+      {/* Giant Typography Background Elements */}
+      <motion.div
+        className="absolute right-0 bottom-1/4 select-none pointer-events-none font-black text-[14vw] leading-none text-zinc-200/25 dark:text-zinc-900/20 tracking-tighter uppercase whitespace-nowrap z-0 translate-x-12"
+        initial={{ opacity: 0, x: 80 }}
+        animate={{ opacity: 1, x: 48 }}
+        transition={{ duration: 1.4, ease, delay: 0.2 }}
+      >
         DANIEL
-      </div>
-      <div className="absolute right-0 bottom-1/12 select-none pointer-events-none font-black text-[14vw] leading-none text-transparent [-webkit-text-stroke:1px_rgba(238,105,11,0.12)] dark:[-webkit-text-stroke:1px_rgba(238,105,11,0.15)] tracking-tighter uppercase whitespace-nowrap z-0 translate-x-24">
+      </motion.div>
+      <motion.div
+        className="absolute right-0 bottom-1/12 select-none pointer-events-none font-black text-[14vw] leading-none text-transparent [-webkit-text-stroke:1px_rgba(238,105,11,0.12)] dark:[-webkit-text-stroke:1px_rgba(238,105,11,0.15)] tracking-tighter uppercase whitespace-nowrap z-0 translate-x-24"
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 96 }}
+        transition={{ duration: 1.4, ease, delay: 0.4 }}
+      >
         SWAGG
-      </div>
+      </motion.div>
 
       <div className="relative z-10 max-w-4xl w-full flex flex-col items-start text-left">
-        {/* Gigantic Main Headline */}
-        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-[#BBD3EB] leading-[0.85] uppercase">
+        {/* Headline */}
+        <motion.h1
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-[#BBD3EB] leading-[0.85] uppercase"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease, delay: 0.1 }}
+        >
           BUILDING <br />
           SOFTWARES <br />
           <span className="text-[#0B1014]">BEUTIFULLY</span>
-        </h1>
+        </motion.h1>
 
-        <h2 className="mt-4 text-2xl sm:text-4xl font-black text-[#0B1014] tracking-tight leading-none uppercase">
-          HELLO I'M DANIEL, A FRONTEND DEVELOPER.
-        </h2>
+        <motion.h2
+          className="mt-4 text-2xl sm:text-xl font-black text-[#0B1014] tracking-tight leading-none uppercase"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.35 }}
+        >
+          HELLO I&apos;M DANIEL, A FRONTEND DEVELOPER.
+        </motion.h2>
 
-        {/* Left Aligned Description */}
-        <p className="mt-6 max-w-xl text-base sm:text-lg text-[#BBD3EB] leading-relaxed font-medium">
+        <motion.p
+          className="mt-6 max-w-xl text-[16px] text-[#BBD3EB] leading-relaxed font-medium"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.5 }}
+        >
           Building highly-performant, accessible, and stunning web experiences.
           Focused on combining robust backend structures with pixel-perfect
           visual design.
-        </p>
+        </motion.p>
 
-        {/* Clean, Prominent Left Aligned CTAs */}
-        <div className="mt-8 flex flex-wrap items-center gap-4">
+        {/* CTAs */}
+        <motion.div
+          className="mt-8 flex flex-wrap items-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.65 }}
+        >
           <a
             href="#projects"
             className="inline-flex items-center gap-2 h-12 px-6 rounded-[5px] bg-[#ee690b] hover:bg-[#d55806] text-[#0B1014] font-bold text-sm transition-all shadow-lg shadow-orange-500/10 hover:shadow-orange-500/20 uppercase tracking-wide group"
@@ -58,10 +106,15 @@ export default function Hero() {
           >
             Get in touch
           </a>
-        </div>
+        </motion.div>
 
-        {/* Minimal Social Links under text/CTA */}
-        <div className="mt-12 flex items-center gap-5">
+        {/* Social Links */}
+        <motion.div
+          className="mt-12 flex items-center gap-5"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.8 }}
+        >
           <a
             href="https://github.com/dannyswagg"
             target="_blank"
@@ -87,7 +140,7 @@ export default function Hero() {
           >
             <EmailIcon />
           </a>
-        </div>
+        </motion.div>
       </div>
 
       {/* Decorative background overlay gradient */}

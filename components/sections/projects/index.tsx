@@ -1,5 +1,20 @@
+"use client";
+
+import { motion } from "motion/react";
 import { SectionLabel } from "../about";
 import ProjectCard, { type Project } from "./ProjectCard";
+
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+};
+
+const cardItem = {
+  hidden: { opacity: 0, y: 36 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
+};
 
 const projects: Project[] = [
   {
@@ -55,25 +70,41 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <SectionLabel>Projects</SectionLabel>
-        <div className="mt-4 flex items-end justify-between">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#BBD3EB]">
-            Things I&apos;ve built
-          </h2>
-          <a
-            href="https://github.com/dannyswagg"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-[#EE690B] hover:text-[#d55806] font-medium transition-colors hidden sm:block"
-          >
-            View all on GitHub →
-          </a>
-        </div>
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease }}
+        >
+          <SectionLabel>Projects</SectionLabel>
+          <div className="mt-4 flex items-end justify-between">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#BBD3EB]">
+              Things I&apos;ve built
+            </h2>
+            <a
+              href="https://github.com/dannyswagg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-[#EE690B] hover:text-[#d55806] font-medium transition-colors hidden sm:block"
+            >
+              View all on GitHub →
+            </a>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+        >
           {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+            <motion.div key={project.title} variants={cardItem}>
+              <ProjectCard {...project} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -21,7 +21,7 @@ export default function NavBar() {
 
   return (
     <header
-      className={`fixed top-5 inset-x-0 z-50 transition-all duration-300 ${
+      className={`hidden md:block fixed top-5 inset-x-0 z-50 transition-all duration-300 ${
         scrolled ? "backdrop-transparent" : "bg-transparent"
       }`}
     >

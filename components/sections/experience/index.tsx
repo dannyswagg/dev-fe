@@ -1,5 +1,20 @@
+"use client";
+
+import { motion } from "motion/react";
 import { SectionLabel } from "../about";
 import ExperienceItem, { type ExperienceEntry } from "./ExperienceItem";
+
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.15 } },
+};
+
+const slideUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
+};
 
 const experiences: ExperienceEntry[] = [
   {
@@ -35,15 +50,34 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24 px-6 bg-zinc-50 dark:bg-zinc-950/50">
       <div className="max-w-5xl mx-auto">
-        <SectionLabel>Experience</SectionLabel>
-        <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-12">
-          Where I&apos;ve worked
-        </h2>
-        <div className="max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease }}
+        >
+          <SectionLabel>Experience</SectionLabel>
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-12">
+            Where I&apos;ve worked
+          </h2>
+        </motion.div>
+
+        <motion.div
+          className="max-w-2xl"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+        >
           {experiences.map((entry) => (
-            <ExperienceItem key={`${entry.company}-${entry.role}`} {...entry} />
+            <motion.div
+              key={`${entry.company}-${entry.role}`}
+              variants={slideUp}
+            >
+              <ExperienceItem {...entry} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

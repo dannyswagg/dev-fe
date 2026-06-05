@@ -1,4 +1,19 @@
+"use client";
+
+import { motion } from "motion/react";
 import { SectionLabel } from "../about";
+
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
+const cardItem = {
+  hidden: { opacity: 0, y: 32 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
+};
 
 const categories = [
   {
@@ -43,13 +58,20 @@ export default function Skills() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         {/* Right Column: Categories Grid */}
-        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <motion.div
+          className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+        >
           {categories.map(({ title, skills }) => (
-            <div
+            <motion.div
               key={title}
+              variants={cardItem}
               className="group relative rounded-[5px] border border-zinc-200/50 dark:border-zinc-800/60 p-6 sm:p-8 bg-white dark:bg-zinc-900/20 backdrop-blur-xs transition-all duration-300 hover:border-[#ee690b]/40 dark:hover:border-[#ee690b]/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/[0.02]"
             >
-              {/* Corner accent hover animation */}
+              {/* Corner accent */}
               <div className="absolute top-0 right-0 w-0 h-0 border-t-2 border-r-2 border-[#ee690b] transition-all duration-300 group-hover:w-4 group-hover:h-4" />
 
               <h4 className="text-lg font-extrabold text-[#BBD3EB] mb-6 uppercase tracking-wider group-hover:text-[#ee690b] transition-colors">
@@ -66,12 +88,18 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Left Column: Section Header */}
-        <div className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-32 h-fit">
+        <motion.div
+          className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-32 h-fit"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease }}
+        >
           <SectionLabel>Skills</SectionLabel>
           <h3 className="mt-8 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-[#BBD3EB] tracking-tighter leading-[0.85] uppercase">
             WHAT <br />
@@ -83,7 +111,7 @@ export default function Skills() {
             performant interfaces with React and React Native, and reach for
             tools that keep the developer experience sharp.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

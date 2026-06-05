@@ -48,8 +48,11 @@ const experiences: ExperienceEntry[] = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6 bg-zinc-50 dark:bg-zinc-950/50">
-      <div className="max-w-5xl mx-auto">
+    <section
+      id="experience"
+      className="py-20 sm:py-24 px-5 sm:px-6 bg-zinc-50 dark:bg-zinc-950/50"
+    >
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +60,7 @@ export default function Experience() {
           transition={{ duration: 0.7, ease }}
         >
           <SectionLabel>Experience</SectionLabel>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-12">
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-8 sm:mb-12">
             Where I&apos;ve worked
           </h2>
         </motion.div>

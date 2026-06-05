@@ -68,7 +68,7 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="projects" className="py-20 sm:py-24 px-5 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -77,7 +77,7 @@ export default function Projects() {
           transition={{ duration: 0.7, ease }}
         >
           <SectionLabel>Projects</SectionLabel>
-          <div className="mt-4 flex items-end justify-between">
+          <div className="mt-4 flex items-end justify-between gap-4">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#BBD3EB]">
               Things I&apos;ve built
             </h2>
@@ -93,7 +93,7 @@ export default function Projects() {
         </motion.div>
 
         <motion.div
-          className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"

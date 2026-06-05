@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import type { ReactNode } from "react";
 
 // Loaded lazily — the import() is only triggered when <MobileCarousel> first renders,
@@ -11,12 +11,29 @@ const MobileCarousel = dynamic(
   { ssr: false },
 );
 
-export default function MobileCarouselLoader({ children }: { children: ReactNode }) {
-  const [isMobile, setIsMobile] = useState(false);
+function subscribeToResize(callback: () => void) {
+  window.addEventListener("resize", callback, { passive: true });
+  return () => window.removeEventListener("resize", callback);
+}
 
-  useEffect(() => {
-    if (window.innerWidth < 768) setIsMobile(true);
-  }, []);
+function getMobileSnapshot() {
+  return window.innerWidth < 768;
+}
+
+function getServerMobileSnapshot() {
+  return false;
+}
+
+export default function MobileCarouselLoader({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const isMobile = useSyncExternalStore(
+    subscribeToResize,
+    getMobileSnapshot,
+    getServerMobileSnapshot,
+  );
 
   // On desktop, bail out immediately — MobileCarousel JS is never downloaded.
   // MobileCarousel handles resize internally (returning null if resized to desktop).

@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden px-6 lg:px-16 pt-24"
+      className="relative min-h-screen flex items-center overflow-hidden px-5 sm:px-6 lg:px-16 pt-24"
     >
       {/* Background image */}
       <Image
@@ -26,7 +26,7 @@ export default function Hero() {
 
       {/* Giant Typography Background Elements */}
       <motion.div
-        className="absolute right-0 bottom-1/4 select-none pointer-events-none font-black text-[14vw] leading-none text-zinc-200/25 dark:text-zinc-900/20 tracking-tighter uppercase whitespace-nowrap z-0 translate-x-12"
+        className="absolute right-0 bottom-1/4 select-none pointer-events-none font-black text-6xl sm:text-[14vw] leading-none text-zinc-200/25 dark:text-zinc-900/20 tracking-tight uppercase whitespace-nowrap z-0 translate-x-12"
         initial={{ opacity: 0, x: 80 }}
         animate={{ opacity: 1, x: 48 }}
         transition={{ duration: 1.4, ease, delay: 0.2 }}
@@ -34,7 +34,7 @@ export default function Hero() {
         DANIEL
       </motion.div>
       <motion.div
-        className="absolute right-0 bottom-1/12 select-none pointer-events-none font-black text-[14vw] leading-none text-transparent [-webkit-text-stroke:1px_rgba(238,105,11,0.12)] dark:[-webkit-text-stroke:1px_rgba(238,105,11,0.15)] tracking-tighter uppercase whitespace-nowrap z-0 translate-x-24"
+        className="absolute right-0 bottom-1/12 select-none pointer-events-none font-black text-6xl sm:text-[14vw] leading-none text-transparent [-webkit-text-stroke:1px_rgba(238,105,11,0.12)] dark:[-webkit-text-stroke:1px_rgba(238,105,11,0.15)] tracking-tight uppercase whitespace-nowrap z-0 translate-x-24"
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 96 }}
         transition={{ duration: 1.4, ease, delay: 0.4 }}
@@ -45,7 +45,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-4xl w-full flex flex-col items-start text-left">
         {/* Headline */}
         <motion.h1
-          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-[#BBD3EB] leading-[0.85] uppercase"
+          className="text-[2.55rem] min-[380px]:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-[#BBD3EB] leading-[0.9] sm:leading-[0.85] uppercase"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease, delay: 0.1 }}
@@ -56,7 +56,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.h2
-          className="mt-4 text-2xl sm:text-xl font-black text-[#0B1014] tracking-tight leading-none uppercase"
+          className="mt-4 text-lg sm:text-xl font-black text-[#0B1014] tracking-tight leading-tight uppercase"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.35 }}
@@ -65,7 +65,7 @@ export default function Hero() {
         </motion.h2>
 
         <motion.p
-          className="mt-6 max-w-xl text-[16px] text-[#BBD3EB] leading-relaxed font-medium"
+          className="mt-5 max-w-xl text-sm sm:text-base text-[#BBD3EB] leading-relaxed font-medium"
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.5 }}
@@ -77,14 +77,14 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div
-          className="mt-8 flex flex-wrap items-center gap-4"
+          className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.65 }}
         >
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 h-12 px-6 rounded-[5px] bg-[#ee690b] hover:bg-[#d55806] text-[#0B1014] font-bold text-sm transition-all shadow-lg shadow-orange-500/10 hover:shadow-orange-500/20 uppercase tracking-wide group"
+            className="inline-flex items-center gap-2 h-11 sm:h-12 px-4 sm:px-6 rounded-[5px] bg-[#ee690b] hover:bg-[#d55806] text-[#0B1014] font-bold text-xs sm:text-sm transition-all shadow-lg shadow-orange-500/10 hover:shadow-orange-500/20 uppercase tracking-wide group"
           >
             <span>View my work</span>
             <svg
@@ -103,7 +103,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center h-12 px-6 rounded-[5px]  bg-black dark:hover:bg-zinc-100 dark:hover:text-zinc-900 text-[#ee690b] dark:text-zinc-100 font-bold text-sm transition-all uppercase tracking-wide"
+            className="inline-flex items-center h-11 sm:h-12 px-4 sm:px-6 rounded-[5px] bg-black dark:hover:bg-zinc-100 dark:hover:text-zinc-900 text-[#ee690b] dark:text-zinc-100 font-bold text-xs sm:text-sm transition-all uppercase tracking-wide"
           >
             Get in touch
           </a>
@@ -111,7 +111,7 @@ export default function Hero() {
 
         {/* Social Links */}
         <motion.div
-          className="mt-12 flex items-center gap-5"
+          className="mt-9 sm:mt-12 flex items-center gap-5"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.8 }}

@@ -30,12 +30,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-32 px-6 lg:px-16 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900/40 overflow-hidden"
+      className="relative py-24 sm:py-32 px-5 sm:px-6 lg:px-16 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900/40 overflow-hidden"
     >
       {/* Decorative background aura blur */}
       <div className="absolute right-0 top-1/4 -translate-y-1/2 w-96 h-96 bg-[#ee690b]/5 rounded-full blur-3xl pointer-events-none select-none" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16">
         {/* Left Side: Bold Header */}
         <motion.div
           className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-32 h-fit"
@@ -45,7 +45,7 @@ export default function About() {
           transition={{ duration: 0.8, ease }}
         >
           <SectionLabel>About me</SectionLabel>
-          <h3 className="mt-8 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-[#BBD3EB] tracking-tighter leading-[0.85] uppercase">
+          <h3 className="mt-6 sm:mt-8 text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-[#BBD3EB] tracking-tight leading-[0.9] sm:leading-[0.85] uppercase">
             THE <br />
             MIND <br />
             BEHIND <br />
@@ -64,10 +64,10 @@ export default function About() {
         >
           {/* Quote */}
           <motion.div
-            className="border-l-4 border-[#ee690b] pl-6"
+            className="border-l-4 border-[#ee690b] pl-4 sm:pl-6"
             variants={fadeUp}
           >
-            <p className="text-2xl sm:text-3xl font-extrabold text-[#BBD3EB] tracking-tight leading-snug">
+            <p className="text-xl sm:text-3xl font-extrabold text-[#BBD3EB] tracking-tight leading-snug">
               &ldquo;I build high-performance products for the web and mobile,
               occasionally breaking them beautifully to rebuild them even
               stronger.&rdquo;
@@ -76,7 +76,7 @@ export default function About() {
 
           {/* Narrative Body */}
           <motion.div
-            className="mt-8 space-y-6 text-base sm:text-lg text-[#BBD3EB]/60 leading-relaxed font-medium"
+            className="mt-6 sm:mt-8 space-y-4 sm:space-y-6 text-sm sm:text-lg text-[#BBD3EB]/60 leading-relaxed font-medium"
             variants={fadeUp}
           >
             <p>
@@ -94,12 +94,12 @@ export default function About() {
           </motion.div>
 
           {/* Resume CTA */}
-          <motion.div className="mt-10" variants={fadeUp}>
+          <motion.div className="mt-8 sm:mt-10" variants={fadeUp}>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 h-12 rounded-[5px] border-2 border-[#ee690b] text-[#ee690b] hover:bg-[#ee690b] hover:text-white font-extrabold text-xs uppercase tracking-widest transition-all duration-300 group"
+              className="inline-flex items-center gap-3 px-4 sm:px-6 h-11 sm:h-12 rounded-[5px] border-2 border-[#ee690b] text-[#ee690b] hover:bg-[#ee690b] hover:text-white font-extrabold text-xs uppercase tracking-widest transition-all duration-300 group"
             >
               <span>Download resume</span>
               <svg
@@ -120,20 +120,20 @@ export default function About() {
 
           {/* Stats Grid */}
           <motion.div
-            className="mt-20 grid grid-cols-2 gap-4 sm:gap-6"
+            className="mt-10 sm:mt-20 grid grid-cols-1 min-[380px]:grid-cols-2 gap-3 sm:gap-6"
             variants={staggerContainer}
           >
             {highlights.map(({ label, value }) => (
               <motion.div
                 key={label}
                 variants={statItem}
-                className="group relative rounded-[5px] border border-zinc-200/50 dark:border-zinc-800/60 p-6 sm:p-8 bg-zinc-50/50 dark:bg-zinc-900/30 backdrop-blur-xs transition-all duration-300 hover:border-[#ee690b]/50 dark:hover:border-[#ee690b]/40 hover:-translate-y-1"
+                className="group relative rounded-[5px] border border-zinc-200/50 dark:border-zinc-800/60 p-4 sm:p-8 bg-zinc-50/50 dark:bg-zinc-900/30 backdrop-blur-xs transition-all duration-300 hover:border-[#ee690b]/50 dark:hover:border-[#ee690b]/40 hover:-translate-y-1"
               >
                 <div className="absolute top-0 left-0 w-0 h-0.75 bg-[#ee690b] transition-all duration-300 group-hover:w-full" />
-                <p className="text-4xl sm:text-5xl font-black text-[#BBD3EB] tracking-tight transition-colors group-hover:text-[#ee690b]">
+                <p className="text-3xl sm:text-5xl font-black text-[#BBD3EB] tracking-tight transition-colors group-hover:text-[#ee690b]">
                   {value}
                 </p>
-                <p className="mt-3 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-[#BBD3EB]/60 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
+                <p className="mt-2 sm:mt-3 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-[#BBD3EB]/60 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
                   {label}
                 </p>
               </motion.div>
@@ -148,7 +148,7 @@ export default function About() {
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="h-0/5 w-6 bg-[#ee690b]" />
+      <span className="h-0.5 w-6 bg-[#ee690b]" />
       <p className="text-xs sm:text-sm font-black uppercase tracking-widest text-[#ee690b]">
         {children}
       </p>

@@ -35,7 +35,7 @@ const socials = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-32 px-6 lg:px-16">
+    <section id="contact" className="py-24 sm:py-32 px-5 sm:px-6 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -46,7 +46,7 @@ export default function Contact() {
           <SectionLabel>Contact</SectionLabel>
         </motion.div>
 
-        <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
           {/* Left column */}
           <motion.div
             variants={staggerContainer}
@@ -62,14 +62,14 @@ export default function Contact() {
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-[#BBD3EB]/60 leading-relaxed"
+              className="mt-4 text-sm sm:text-base text-[#BBD3EB]/60 leading-relaxed"
             >
               I&apos;m currently open to freelance projects and full-time
               opportunities. If you have something in mind or just want to say
               hi, my inbox is always open.
             </motion.p>
 
-            <motion.ul className="mt-8 space-y-5" variants={staggerContainer}>
+            <motion.ul className="mt-7 sm:mt-8 space-y-4 sm:space-y-5" variants={staggerContainer}>
               {socials.map(({ label, href, description }) => (
                 <motion.li key={label} variants={fadeUp}>
                   <a
@@ -80,12 +80,12 @@ export default function Contact() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="group flex items-center gap-4"
+                    className="group flex flex-col min-[380px]:flex-row min-[380px]:items-center gap-1 min-[380px]:gap-4"
                   >
-                    <span className="text-sm font-semibold w-20 text-[#BBD3EB]">
+                    <span className="text-sm font-semibold min-[380px]:w-20 text-[#BBD3EB]">
                       {label}
                     </span>
-                    <span className="text-sm text-[#BBD3EB]/60 group-hover:text-[#ee690b] transition-colors">
+                    <span className="text-sm text-[#BBD3EB]/60 group-hover:text-[#ee690b] transition-colors break-all">
                       {description}
                     </span>
                   </a>
@@ -114,7 +114,7 @@ function ContactForm() {
     <form
       action="https://formspree.io/f/your-form-id"
       method="POST"
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-3 sm:gap-4"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <label className="flex flex-col gap-1.5">
@@ -124,7 +124,7 @@ function ContactForm() {
             name="name"
             required
             placeholder="Jane Smith"
-            className="h-10 rounded-lg border border-[#BBD3EB]/60 px-3 text-sm text-[#BBD3EB] placeholder:text-[#BBD3EB]/60 focus:outline-none focus:ring-1 focus:ring-[#ee690b] focus:border-transparent transition"
+            className="h-10 rounded-lg border border-[#BBD3EB]/60 bg-transparent px-3 text-sm text-[#BBD3EB] placeholder:text-[#BBD3EB]/60 focus:outline-none focus:ring-1 focus:ring-[#ee690b] focus:border-transparent transition"
           />
         </label>
         <label className="flex flex-col gap-1.5">
@@ -134,7 +134,7 @@ function ContactForm() {
             name="email"
             required
             placeholder="jane@example.com"
-            className="h-10 rounded-lg border border-[#BBD3EB]/60 px-3 text-sm text-[#BBD3EB] placeholder:text-[#BBD3EB]/60 focus:outline-none focus:ring-1 focus:ring-[#ee690b] focus:border-transparent transition"
+            className="h-10 rounded-lg border border-[#BBD3EB]/60 bg-transparent px-3 text-sm text-[#BBD3EB] placeholder:text-[#BBD3EB]/60 focus:outline-none focus:ring-1 focus:ring-[#ee690b] focus:border-transparent transition"
           />
         </label>
       </div>
@@ -147,7 +147,7 @@ function ContactForm() {
           required
           rows={5}
           placeholder="Tell me about your project..."
-          className="rounded-lg border border-[#BBD3EB]/60 px-3 py-2.5 text-sm text-[#BBD3EB] placeholder:text-[#BBD3EB]/60 focus:outline-none focus:ring-1 focus:ring-[#ee690b] focus:border-transparent transition resize-none"
+          className="rounded-lg border border-[#BBD3EB]/60 bg-transparent px-3 py-2.5 text-sm text-[#BBD3EB] placeholder:text-[#BBD3EB]/60 focus:outline-none focus:ring-1 focus:ring-[#ee690b] focus:border-transparent transition resize-none"
         />
       </label>
       <button

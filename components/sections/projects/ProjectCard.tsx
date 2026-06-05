@@ -15,9 +15,9 @@ export default function ProjectCard({
   liveUrl,
 }: Project) {
   return (
-    <article className="group flex flex-col rounded-[5px] border border-[#BBD3EB]/60 bg-white dark:bg-zinc-900 p-6 hover:border-[#EE690B] dark:hover:border-[#EE690B] transition-colors">
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <h3 className="text-lg font-semibold text-[#BBD3EB] group-hover:text-[#EE690B] transition-colors">
+    <article className="group flex flex-col rounded-[5px] border border-[#BBD3EB]/60 bg-white dark:bg-zinc-900 p-4 sm:p-6 hover:border-[#EE690B] dark:hover:border-[#EE690B] transition-colors">
+      <div className="flex items-start justify-between gap-3 sm:gap-4 mb-3 sm:mb-4">
+        <h3 className="text-base sm:text-lg font-semibold text-[#BBD3EB] group-hover:text-[#EE690B] transition-colors">
           {title}
         </h3>
         <div className="flex items-center gap-3 shrink-0">
@@ -45,14 +45,14 @@ export default function ProjectCard({
           )}
         </div>
       </div>
-      <p className="flex-1 text-sm text-[#BBD3EB]/60 leading-relaxed mb-5">
+      <p className="flex-1 text-sm text-[#BBD3EB]/60 leading-relaxed mb-4 sm:mb-5">
         {description}
       </p>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="text-xs px-2.5 py-1 rounded-[5px] bg-[#2E3E4B] text-[#BBD3EB]/60"
+            className="text-xs px-2 py-1 sm:px-2.5 rounded-[5px] bg-[#2E3E4B] text-[#BBD3EB]/60"
           >
             {tag}
           </span>

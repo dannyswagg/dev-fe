@@ -25,3 +25,28 @@ body {
   color: var(--foreground);
   font-family: var(--font-stack-sans-notch), sans-serif;
 }
+
+@media (max-width: 767px) {
+  html,
+  body {
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  .mobile-carousel-card section {
+    box-sizing: border-box;
+    min-height: 100%;
+    padding: 5rem 1rem 2rem !important;
+  }
+
+  .mobile-carousel-card #hero {
+    justify-content: flex-start;
+    min-height: 100dvh;
+    padding-top: 6rem !important;
+    padding-bottom: 5.5rem !important;
+  }
+
+  .mobile-carousel-card section > div {
+    width: 100%;
+  }
+}

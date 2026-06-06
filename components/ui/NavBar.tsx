@@ -1,7 +1,3 @@
-"use client";
-
-import { useState, useEffect } from "react";
-
 const links = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
@@ -11,20 +7,8 @@ const links = [
 ];
 
 export default function NavBar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`hidden md:block fixed top-5 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-transparent" : "bg-transparent"
-      }`}
-    >
+    <header className="hidden md:block fixed top-5 inset-x-0 z-50 transition-all duration-300 bg-transparent">
       <nav className="max-w-5xl mx-auto flex items-center justify-between px-6 h-16 text-[#ee690b] bg-[#0B1014] rounded-[5px]">
         <a
           href="#hero"

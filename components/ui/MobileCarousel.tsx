@@ -5,7 +5,6 @@ import {
   useEffect,
   useCallback,
   useRef,
-  useSyncExternalStore,
 } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { PanInfo } from "motion/react";
@@ -30,19 +29,6 @@ const SLIDES = [
   { label: "Contact", content: <Contact /> },
 ];
 
-function subscribeToResize(callback: () => void) {
-  window.addEventListener("resize", callback, { passive: true });
-  return () => window.removeEventListener("resize", callback);
-}
-
-function getMobileSnapshot() {
-  return window.innerWidth < 768;
-}
-
-function getServerMobileSnapshot() {
-  return false;
-}
-
 const cardVariants = {
   enter: (dir: number) => ({
     x: dir > 0 ? "108%" : "-108%",
@@ -65,11 +51,6 @@ const cardVariants = {
 };
 
 export default function MobileCarousel() {
-  const isMobile = useSyncExternalStore(
-    subscribeToResize,
-    getMobileSnapshot,
-    getServerMobileSnapshot,
-  );
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -150,11 +131,6 @@ export default function MobileCarousel() {
     },
     [navigateFromSwipe],
   );
-
-  // Desktop layout is owned by page.tsx's <main>; this component is overlay-only.
-  if (!isMobile) {
-    return null;
-  }
 
   const isFirst = index === 0;
   const isLast = index === SLIDES.length - 1;

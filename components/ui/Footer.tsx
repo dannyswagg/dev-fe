@@ -1,10 +1,11 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+    <footer className="border-t text-[#BBD3EB]/60 py-8">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#BBD3EB]/60">
         <p>
-          &copy; {new Date().getFullYear()} Danny. Built with Next.js &amp;
-          Tailwind CSS.
+          &copy; {new Date().getFullYear()} Developed by{" "}
+          <span className="font-boldbold text-[#BBD3EB]">FE</span>
+          <span className="text-[#ee690b]">.</span>
         </p>
         <div className="flex items-center gap-6">
           <a

@@ -96,8 +96,8 @@ export default function About() {
           {/* Resume CTA */}
           <motion.div className="mt-8 sm:mt-10" variants={fadeUp}>
             <a
-              href="/resume.pdf"
-              target="_blank"
+              download
+              href="../../../Dan_CV.pdf"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-4 sm:px-6 h-11 sm:h-12 rounded-[5px] border-2 border-[#ee690b] text-[#ee690b] hover:bg-[#ee690b] hover:text-white font-extrabold text-xs uppercase tracking-widest transition-all duration-300 group"
             >

@@ -28,16 +28,9 @@ export default function Home() {
         Mobile-only carousel overlay.
         MobileCarouselLoader ("use client") checks the viewport after hydration.
         If desktop: returns null and MobileCarousel.js is never downloaded.
-        If mobile: lazily loads MobileCarousel and renders it as a fixed overlay.
+        If mobile: lazily loads MobileCarousel and its fixed slide list.
       */}
-      <MobileCarouselLoader>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </MobileCarouselLoader>
+      <MobileCarouselLoader />
     </>
   );
 }

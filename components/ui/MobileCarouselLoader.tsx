@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useSyncExternalStore } from "react";
-import type { ReactNode } from "react";
 
 // Loaded lazily — the import() is only triggered when <MobileCarousel> first renders,
 // which only happens when isMobile is true. Desktop browsers never fetch this chunk.
@@ -24,11 +23,7 @@ function getServerMobileSnapshot() {
   return false;
 }
 
-export default function MobileCarouselLoader({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function MobileCarouselLoader() {
   const isMobile = useSyncExternalStore(
     subscribeToResize,
     getMobileSnapshot,
@@ -39,5 +34,5 @@ export default function MobileCarouselLoader({
   // MobileCarousel handles resize internally (returning null if resized to desktop).
   if (!isMobile) return null;
 
-  return <MobileCarousel>{children}</MobileCarousel>;
+  return <MobileCarousel />;
 }

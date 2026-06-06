@@ -9,13 +9,26 @@ import {
 } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { PanInfo } from "motion/react";
-import React from "react";
+import Hero from "@/components/sections/hero";
+import About from "@/components/sections/about";
+import Skills from "@/components/sections/skills";
+import Projects from "@/components/sections/projects";
+import Experience from "@/components/sections/experience";
+import Contact from "@/components/sections/contact";
 
 const SWIPE_OFFSET = 55;
 const SWIPE_VELOCITY = 350;
 const TOUCH_SWIPE_OFFSET = 46;
+const DUPLICATE_SWIPE_WINDOW = 220;
 
-const LABELS = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
+const SLIDES = [
+  { label: "Home", content: <Hero /> },
+  { label: "About", content: <About /> },
+  { label: "Skills", content: <Skills /> },
+  { label: "Projects", content: <Projects /> },
+  { label: "Experience", content: <Experience /> },
+  { label: "Contact", content: <Contact /> },
+];
 
 function subscribeToResize(callback: () => void) {
   window.addEventListener("resize", callback, { passive: true });
@@ -51,11 +64,7 @@ const cardVariants = {
   }),
 };
 
-export default function MobileCarousel({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function MobileCarousel() {
   const isMobile = useSyncExternalStore(
     subscribeToResize,
     getMobileSnapshot,
@@ -65,17 +74,31 @@ export default function MobileCarousel({
   const [direction, setDirection] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
-
-  const slides = React.Children.toArray(children);
+  const lastSwipeAt = useRef(0);
 
   const navigate = useCallback(
     (dir: number) => {
       const next = index + dir;
-      if (next < 0 || next >= slides.length) return;
+      if (next < 0 || next >= SLIDES.length) return;
       setDirection(dir);
       setIndex(next);
     },
-    [index, slides.length],
+    [index],
+  );
+
+  const navigateFromSwipe = useCallback(
+    (dir: number) => {
+      const now = window.performance.now();
+      if (now - lastSwipeAt.current < DUPLICATE_SWIPE_WINDOW) return;
+
+      const next = index + dir;
+      if (next < 0 || next >= SLIDES.length) return;
+
+      lastSwipeAt.current = now;
+      setDirection(dir);
+      setIndex(next);
+    },
+    [index],
   );
 
   useEffect(() => {
@@ -91,15 +114,15 @@ export default function MobileCarousel({
     (_: PointerEvent, info: PanInfo) => {
       setIsDragging(false);
       if (info.offset.x < -SWIPE_OFFSET || info.velocity.x < -SWIPE_VELOCITY) {
-        navigate(1);
+        navigateFromSwipe(1);
       } else if (
         info.offset.x > SWIPE_OFFSET ||
         info.velocity.x > SWIPE_VELOCITY
       ) {
-        navigate(-1);
+        navigateFromSwipe(-1);
       }
     },
-    [navigate],
+    [navigateFromSwipe],
   );
 
   const onTouchStart = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
@@ -123,9 +146,9 @@ export default function MobileCarousel({
         return;
       }
 
-      navigate(offsetX < 0 ? 1 : -1);
+      navigateFromSwipe(offsetX < 0 ? 1 : -1);
     },
-    [navigate],
+    [navigateFromSwipe],
   );
 
   // Desktop layout is owned by page.tsx's <main>; this component is overlay-only.
@@ -134,8 +157,9 @@ export default function MobileCarousel({
   }
 
   const isFirst = index === 0;
-  const isLast = index === slides.length - 1;
+  const isLast = index === SLIDES.length - 1;
   const isHome = index === 0;
+  const activeSlide = SLIDES[index];
 
   return (
     <div className="fixed inset-0 bg-[#07090b] overflow-hidden z-10 md:hidden">
@@ -161,8 +185,8 @@ export default function MobileCarousel({
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={{
-            left: isLast ? 0.04 : 0.14,
-            right: isFirst ? 0.04 : 0.14,
+            left: isLast ? 0 : 0.14,
+            right: isFirst ? 0 : 0.14,
           }}
           onDragStart={() => setIsDragging(true)}
           onDragEnd={onDragEnd}
@@ -188,7 +212,7 @@ export default function MobileCarousel({
             onTouchEnd={onTouchEnd}
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            <div className="min-h-full">{slides[index]}</div>
+            <div className="min-h-full">{activeSlide.content}</div>
           </div>
 
           {/* Gradient mask behind logo so scrolling content fades out underneath */}
@@ -218,18 +242,18 @@ export default function MobileCarousel({
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500"
         >
-          {LABELS[index]}
+          {activeSlide.label}
         </motion.span>
 
         <div className="flex items-center gap-1.5 pointer-events-auto">
-          {slides.map((_, i) => (
+          {SLIDES.map(({ label }, i) => (
             <button
-              key={i}
+              key={label}
               onClick={() => {
                 setDirection(i > index ? 1 : -1);
                 setIndex(i);
               }}
-              aria-label={`Go to ${LABELS[i]}`}
+              aria-label={`Go to ${label}`}
               className="relative flex items-center justify-center"
             >
               <motion.div

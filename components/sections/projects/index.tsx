@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { SectionLabel } from "../about";
+import { SectionLabel } from "../about/about";
 import ProjectCard, { type Project } from "./ProjectCard";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -18,51 +18,85 @@ const cardItem = {
 
 const projects: Project[] = [
   {
-    title: "Project Alpha",
+    title: "Live",
     description:
-      "A full-stack SaaS application with real-time collaboration, built with Next.js, Prisma, and WebSockets. Handles 10k+ active users.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "WebSockets"],
-    githubUrl: "https://github.com/dannyswagg",
-    liveUrl: "#",
+      "LIVE is a real-time anonymous chat application that enables users to connect and message each other without revealing their identity.",
+    tags: [
+      "React.js",
+      "Tailwind CSS",
+      "Node.js",
+      "WebSockets",
+      "Express.js",
+      "Socket.IO",
+      "Vite",
+    ],
+    githubUrl: "https://github.com/dannyswagg/live",
+    liveUrl: "https://live-three-psi.vercel.app/",
     featured: true,
   },
   {
-    title: "Open CLI Tool",
+    title: "E-commerce Store",
     description:
-      "A developer CLI that scaffolds opinionated project structures with one command. Downloaded 5k+ times on npm.",
-    tags: ["Node.js", "TypeScript", "CLI"],
-    githubUrl: "https://github.com/dannyswagg",
+      "An e-commerce store built with React.js and Tailwind CSS, featuring a Store API for product management and Redux for state management.",
+    tags: [
+      "React.js",
+      "Tailwind CSS",
+      "Store API",
+      "JSX",
+      "Redux",
+      "State Management",
+    ],
+    githubUrl: "https://github.com/dannyswagg/store",
+    liveUrl: "https://berries.vercel.app/",
   },
   {
-    title: "Design System",
+    title: "CNT Luxury Apartments",
     description:
-      "A fully accessible component library built on Radix UI with Storybook documentation and automated visual regression testing.",
-    tags: ["React", "Radix UI", "Storybook", "Vitest"],
-    githubUrl: "https://github.com/dannyswagg",
-    liveUrl: "#",
+      "A real estate website for CNT Luxury Apartments, showcasing their properties and services. Built with HTML, CSS, Bootstrap, and Vanilla JavaScript.",
+    tags: [
+      "HTML",
+      "CSS",
+      "BOOTSTRAP",
+      "Vanilla Javascript",
+      "Responsive Design",
+    ],
+    liveUrl: "https://www.cntapartments.com.ng/",
   },
   {
-    title: "Analytics Dashboard",
+    title: "Akwaaba Services",
     description:
-      "Real-time analytics dashboard with charting, filtering, and CSV export. Integrated with a self-hosted Plausible instance.",
-    tags: ["React", "Recharts", "REST API", "Tailwind CSS"],
-    githubUrl: "https://github.com/dannyswagg",
-    liveUrl: "#",
+      "A web application for Akwaaba Services, a company that provides various services to clients. Built with React.js, Next.js, and Tailwind CSS.",
+    tags: [
+      "React.js",
+      "Next.js",
+      "Endpoints",
+      "REST API",
+      "Tailwind CSS",
+      "Typescript",
+    ],
+    githubUrl: "https://github.com/dannyswagg/akwaaba",
+    liveUrl: "https://www.cntapartments.com.ng/",
   },
   {
-    title: "Auth Library",
+    title: "Subscription Management Mobile",
     description:
       "Lightweight JWT-based authentication middleware for Express with refresh token rotation and session management.",
-    tags: ["Node.js", "Express", "JWT", "Redis"],
-    githubUrl: "https://github.com/dannyswagg",
+    tags: ["React Native", "React", "Expo", "Tailwind CSS", "Typescript"],
+    githubUrl: "https://github.com/dannyswagg/recurrly-mobile",
   },
   {
-    title: "Portfolio v1",
+    title: "AI Video Dashboard",
     description:
-      "The first iteration of my personal portfolio site, built with plain HTML, CSS, and JavaScript. Still live somewhere.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    githubUrl: "https://github.com/dannyswagg",
-    liveUrl: "#",
+      "A web application that allows users to generate videos using AI technology. Built with React.js, Tailwind CSS, and Vercel for deployment.",
+    tags: [
+      "React.js",
+      "Tailwind CSS",
+      "Vercel",
+      "React Hooks",
+      "State Management",
+    ],
+    githubUrl: "https://github.com/dannyswagg/vidxir",
+    liveUrl: "https://vidxir-xi.vercel.app/",
   },
 ];
 

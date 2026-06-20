@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { SectionLabel } from "../about";
+import { SectionLabel } from "../about/about";
 import ExperienceItem, { type ExperienceEntry } from "./ExperienceItem";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -72,7 +72,9 @@ export default function Experience() {
             &amp; <span className="text-[#ee690b]">SHIPPED</span>
           </h3>
           <p className="mt-6 sm:mt-8 text-sm sm:text-lg text-[#BBD3EB]/60 leading-relaxed font-medium">
-            A timeline of my professional journey in software engineering. Building robust web apps, scaling architectures, and crafting premium, high-performance interfaces.
+            A timeline of my professional journey in software engineering.
+            Building robust web apps, scaling architectures, and crafting
+            premium, high-performance interfaces.
           </p>
         </motion.div>
 

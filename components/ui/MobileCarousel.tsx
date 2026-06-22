@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-} from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { PanInfo } from "motion/react";
 import Hero from "@/components/sections/hero";
@@ -54,6 +49,7 @@ export default function MobileCarousel() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const lastSwipeAt = useRef(0);
 
@@ -61,6 +57,7 @@ export default function MobileCarousel() {
     (dir: number) => {
       const next = index + dir;
       if (next < 0 || next >= SLIDES.length) return;
+      setShowSwipeHint(false);
       setDirection(dir);
       setIndex(next);
     },
@@ -76,6 +73,7 @@ export default function MobileCarousel() {
       if (next < 0 || next >= SLIDES.length) return;
 
       lastSwipeAt.current = now;
+      setShowSwipeHint(false);
       setDirection(dir);
       setIndex(next);
     },
@@ -90,6 +88,11 @@ export default function MobileCarousel() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [navigate]);
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => setShowSwipeHint(false), 5200);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   const onDragEnd = useCallback(
     (_: PointerEvent, info: PanInfo) => {
@@ -106,10 +109,13 @@ export default function MobileCarousel() {
     [navigateFromSwipe],
   );
 
-  const onTouchStart = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
-    const touch = event.touches[0];
-    touchStart.current = { x: touch.clientX, y: touch.clientY };
-  }, []);
+  const onTouchStart = useCallback(
+    (event: React.TouchEvent<HTMLDivElement>) => {
+      const touch = event.touches[0];
+      touchStart.current = { x: touch.clientX, y: touch.clientY };
+    },
+    [],
+  );
 
   const onTouchEnd = useCallback(
     (event: React.TouchEvent<HTMLDivElement>) => {
@@ -226,6 +232,7 @@ export default function MobileCarousel() {
             <button
               key={label}
               onClick={() => {
+                setShowSwipeHint(false);
                 setDirection(i > index ? 1 : -1);
                 setIndex(i);
               }}
@@ -246,6 +253,36 @@ export default function MobileCarousel() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {showSwipeHint && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="pointer-events-none absolute inset-x-0 bottom-24 z-50 flex justify-center px-6"
+          >
+            <div className="flex items-center gap-2 rounded-full border border-[#BBD3EB]/12 bg-[rgba(11,16,20,0.34)] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[#BBD3EB]/78 shadow-lg shadow-black/20 backdrop-blur-[2px]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#ee690b]/75" />
+              <span>Swipe</span>
+              <motion.span
+                aria-hidden
+                animate={{ x: [-3, 3, -3] }}
+                transition={{
+                  duration: 1.2,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                }}
+                className="text-[#ee690b]/85"
+              >
+                &gt;
+              </motion.span>
+              <span className="sr-only">left or right to browse sections.</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Edge hints */}
       {!isFirst && (

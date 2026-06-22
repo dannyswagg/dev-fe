@@ -20,10 +20,10 @@ const statItem = {
 };
 
 const highlights = [
-  { label: "Years of experience", value: "3+" },
-  { label: "Projects shipped", value: "20+" },
-  { label: "Open-source contribs", value: "10+" },
-  { label: "Cups of coffee", value: "∞" },
+  { label: "Years building apps", value: "5+" },
+  { label: "Products shipped", value: "20+" },
+  { label: "Performance-focused builds", value: "95%" },
+  { label: "Tools & APIs integrated", value: "10+" },
 ];
 
 export default function About() {

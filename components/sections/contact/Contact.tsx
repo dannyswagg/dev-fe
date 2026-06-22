@@ -115,7 +115,7 @@ export default function Contact() {
 function ContactForm() {
   return (
     <form
-      action="https://formspree.io/f/your-form-id"
+      action="https://formspree.io/f/xaqgwrjv"
       method="POST"
       className="flex flex-col gap-3 sm:gap-4"
     >
@@ -142,9 +142,7 @@ function ContactForm() {
         </label>
       </div>
       <label className="flex flex-col gap-1.5">
-        <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
-          Message
-        </span>
+        <span className="text-xs font-medium text-[#BBD3EB]">Message</span>
         <textarea
           name="message"
           required

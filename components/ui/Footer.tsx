@@ -12,7 +12,7 @@ export default function Footer() {
             href="https://github.com/dannyswagg"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors"
+            className="hover:text-[#ee690b] transition-colors"
           >
             GitHub
           </a>
@@ -20,29 +20,15 @@ export default function Footer() {
             href="https://linkedin.com/in/dannyswagg"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors"
+            className="hover:text-[#ee690b] transition-colors"
           >
             LinkedIn
           </a>
           <a
             href="mailto:ugiomohd@yahoo.com"
-            className="inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors"
+            className="inline-flex items-center gap-1 hover:text-[#ee690b] transition-colors"
           >
             Email
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <rect width="20" height="16" x="2" y="4" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-            </svg>
           </a>
         </div>
       </div>

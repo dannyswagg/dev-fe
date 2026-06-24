@@ -21,9 +21,9 @@ const statItem = {
 
 const highlights = [
   { label: "Years building apps", value: "5+" },
-  { label: "Products shipped", value: "20+" },
+  { label: "Products shipped", value: "10+" },
   { label: "Performance-focused builds", value: "95%" },
-  { label: "Tools & APIs integrated", value: "10+" },
+  { label: "Tools integrated", value: "10+" },
 ];
 
 export default function About() {
